@@ -1,0 +1,1 @@
+default['ansible']['vars'] = 'dummy=none'

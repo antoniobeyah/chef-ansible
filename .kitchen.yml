@@ -1,0 +1,26 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+  - name: centos-6.4
+
+suites:
+  - name: default
+    run_list:
+      - recipe[ansible::default]
+    attributes:
+      ansible:
+        playbook_archive: 'ansible-pb-logcentral-0.0.3.tgz'
+        bucket: 'sps-build-deploy'
+        path: 'ansible'
+        aws_access_key:
+        aws_secret_key:
+        playbook: search.yml
+        inventory:
+          host_group: '[logcentral-search]'
+        vars:
