@@ -18,9 +18,14 @@ suites:
         playbook_archive: 'ansible-pb-logcentral-0.0.3.tgz'
         bucket: 'sps-build-deploy'
         path: 'ansible'
-        aws_access_key:
-        aws_secret_key:
+        aws_access_key: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
+        aws_secret_key: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
         playbook: search.yml
         inventory:
           host_group: '[logcentral-search]'
         vars:
+          logcentral_env: dev-aws
+          logcentral_data_node_count: 1
+          logcentral_master_node_count: 1
+          logcentral_storage_es_heap: 15G
+          logcentral_aws_group: pretend group
