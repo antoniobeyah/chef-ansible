@@ -5,6 +5,11 @@ template '/tmp/ansible-inventory' do
             })
 end
 
-execute "ansible-playbook -i '/tmp/ansible-inventory' -e #{node['ansible']['vars']} /tmp/ansible-playbooks/#{node['ansible']['playbook']}" do
+file '/tmp/ansible-vars' do
+  content node['ansible']['vars']
+end
+
+execute "ansible-playbook -i '/tmp/ansible-inventory' -e '@ansible-vars' /tmp/ansible-playbooks/#{node['ansible']['playbook']}" do
+  cwd '/tmp'
   action :run
 end
