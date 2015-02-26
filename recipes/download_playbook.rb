@@ -22,7 +22,7 @@ ruby_block 'download the playbook from s3' do
     playbook = bucket.objects[remote_path]
 
     File.open(target_file, 'wb') do |file|
-      obj.read do |chunk|
+      playbook.read do |chunk|
         file.write(chunk)
       end
     end
