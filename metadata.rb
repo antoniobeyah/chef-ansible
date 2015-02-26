@@ -6,5 +6,4 @@ description      'Installs/Configures ansible'
 long_description 'Installs/Configures ansible'
 version          '0.1.0'
 
-depends 's3_file'
 depends 'apt'
